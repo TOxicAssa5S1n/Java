@@ -1,0 +1,83 @@
+SLIP-27 
+-------------------------------------------------------------------------------------------------------------------------------------- 
+Q1) 
+class Employee 
+{ 
+String name; 
+int sal; 
+Employee() 
+{ 
+name=null; 
+sal=0; 
+} 
+Employee(String n,int s) 
+{ 
+name=n; 
+sal=s; 
+} 
+int getSalary() 
+{ 
+return sal; 
+} 
+} 
+class Manager extends Employee 
+{ 
+int hra,ta; 
+Manager() 
+{ 
+super(); 
+hra=ta=0; 
+} 
+Manager(String n,int sal,int h,int t) 
+{ 
+super(n,sal); 
+hra=h; ta=t; 
+} 
+int getSalary() 
+{ 
+return (super.getSalary()+hra+ta); 
+} 
+} 
+class EmpMan 
+{ 
+public static void main(String args[]) 
+{ 
+Manager m1=new Manager("Raj",20000,200,800); 
+System.out.println("Salary of Manager= "+m1.getSalary()); 
+} 
+} 
+Q2) 
+import java.io.*; 
+public class filedemo 
+{ 
+ public static void main(String args[]) 
+ { 
+ int count=0; 
+ String str=new String(); 
+ str=args[0]; 
+ File f1=new File(str); 
+ if(f1.isDirectory()) 
+ { 
+ String s[]=f1.list(); 
+ for(int i=0;i<s.length;i++) 
+ { 
+ File f=new File(str+"/"+s[i]); 
+ String s2=s[i]; 
+ if(f.isFile()&& s2.endsWith("txt")) 
+ { 
+ count++; 
+ String fname=f.getName(); 
+System.out.println(""+fname); 
+ } 
+ } 
+ System.out.println("Number of files in given directory :"+count); 
+ } 
+ else if(f1.isFile()) 
+ { System.out.println("File Name : " + f1.getName()); 
+ System.out.println("Parent Path : " + f1.getParent()); 
+ System.out.println("Path : " + f1.getAbsolutePath()); 
+ System.out.println("File Length : " + f1.length()); 
+ 
+ } 
+ } 
+} 

@@ -1,0 +1,162 @@
+ SLIP-5 
+-------------------------------------------------------------------------------------------------------------------------------------- 
+Q1) 
+import java.io.InputStreamReader; 
+import java.io.BufferedReader; 
+import java.io.IOException; 
+class Continent 
+{ 
+String con; 
+InputStreamReader i = new InputStreamReader(System.in); 
+BufferedReader r = new BufferedReader(i); 
+void con_input() throws IOException 
+{ 
+System.out.println("Enter Continent Name: "); 
+con = r.readLine(); 
+} 
+} 
+class Country extends Continent 
+{ 
+String cou ; 
+void cou_input() throws IOException 
+{ 
+System.out.println("Enter Country Name: "); 
+cou = r.readLine(); 
+} 
+} 
+class State extends Country 
+{ 
+String sta; 
+void sta_input() throws IOException 
+{ 
+System.out.println("Enter State Name: "); 
+sta = r.readLine(); 
+} 
+} 
+class Main extends State 
+{ 
+String pla; 
+void pla_input()throws IOException 
+{ 
+System.out.println("Enter Place Name : "); 
+pla = r.readLine(); 
+} 
+public static void main( String argsp[] )throws IOException 
+{ 
+Main s = new Main(); 
+s.con_input(); 
+s.cou_input(); 
+s.sta_input(); 
+s.pla_input(); 
+System.out.println("\n\nContinent: "+s.con); 
+System.out.println("Country: "+s.cou); 
+System.out.println("State: "+s.sta); 
+System.out.println("Place :" + s.pla); 
+} 
+} 
+
+Q2)
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Matrix 
+{
+
+ 
+  public static void main(String[] args) {
+
+    
+    Scanner scan = new Scanner(System.in);
+
+   
+    int a[][] = { { 5, 6, 7 }, { 8, 9, 10 }, { 3, 1, 2 } };
+    int b[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
+    int c[][] = new int[3][3];
+
+   
+    System.out.println("A = " + Arrays.deepToString(a));
+    System.out.println("B = " + Arrays.deepToString(b));
+
+  
+    int choice;
+
+   
+    do {
+     
+      System.out.println("\nChoose the matrix operation,");
+      System.out.println("----------------------------");
+      System.out.println("1. Addition");
+      System.out.println("2. Multiplication");
+      System.out.println("3. Exit");
+      System.out.println("----------------------------");
+      System.out.print("Enter your choice: ");
+      choice = scan.nextInt();
+
+      switch (choice) {
+      case 1:
+        c = add(a, b);
+        System.out.println("Sum of matrix: ");
+        System.out.println(Arrays.deepToString(c));
+        break;
+      case 2:
+        c = multiply(a, b);
+        System.out.println("Multiplication of matrix: ");
+        System.out.println(Arrays.deepToString(c));
+        break;
+      case 3:
+        System.out.println("Thank You.");
+        return;
+      default:
+        System.out.println("Invalid input.");
+        System.out.println("Please enter the correct input.");
+      }
+    } while (true);
+  }
+
+
+  public static int[][] add(int[][] a, int[][] b) {
+
+    int row = a.length;
+    int column = a[0].length;
+
+   
+    int sum[][] = new int[row][column];
+
+    
+    for (int i = 0; i < row; i++) {
+      for (int j = 0; j < column; j++) {
+        sum[i][j] = a[i][j] + b[i][j];
+      }
+    }
+    return sum;
+  }
+
+
+ 
+  public static int[][] multiply(int[][] a, int[][] b) {
+
+   
+    int row = a.length;
+
+    int column = b[0].length;
+
+   
+    int product[][] = new int[row][column];
+
+    for (int i = 0; i < row; i++) {
+      // inner-1 loop utp0 column of B
+      for (int j = 0; j < column; j++) {
+        // assign 0 to the current element
+        product[i][j] = 0;
+
+      
+        for (int k = 0; k < a[0].length; k++) {
+          product[i][j] += a[i][k] * b[k][j];
+        }
+      }
+    }
+    return product;
+  }
+
+ }
